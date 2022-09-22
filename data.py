@@ -2,10 +2,10 @@ import json
 import websocket
 
 from messages import (
-    print_spread_message,
-    print_ohlc_message,
-    print_ticker_message,
-    print_trade_message,
+    process_spread_message,
+    process_ohlc_message,
+    process_ticker_message,
+    process_trade_message,
 )
 
 
@@ -24,7 +24,7 @@ def stream_spread_data(*args: str):
     pairs = json.dumps([arg.upper() for arg in args])
 
     def on_message(ws, message):
-        print_spread_message(message)
+        process_spread_message(message)
 
     def on_error(ws, error):
         print(error)
@@ -62,7 +62,7 @@ def stream_ohlc_data(*args: str, interval=1):
     pairs = json.dumps([arg.upper() for arg in args])
 
     def on_message(ws, message):
-        print_ohlc_message(message)
+        process_ohlc_message(message)
 
     def on_error(ws, error):
         print(error)
@@ -94,7 +94,7 @@ def stream_ticker_data(*args: str):
     pairs = json.dumps([arg.upper() for arg in args])
 
     def on_message(ws, message):
-        print_ticker_message(message)
+        process_ticker_message(message)
 
     def on_error(ws, error):
         print(error)
@@ -126,7 +126,7 @@ def stream_trade_data(*args: str):
     pairs = json.dumps([arg.upper() for arg in args])
 
     def on_message(ws, message):
-        print_trade_message(message)
+        process_trade_message(message)
 
     def on_error(ws, error):
         print(error)

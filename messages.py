@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 
 
-def print_spread_message(message):
+def process_spread_message(message):
     """
     Function prints Spread feed for a currency pair from Kraken WebSockets API
     in a human-readable format.
@@ -30,7 +30,7 @@ def print_spread_message(message):
         )
 
 
-def print_ohlc_message(message):
+def process_ohlc_message(message):
     """
     Function prints Open High Low Close (Candle) feed for a currency pair
     and interval period from Kraken WebSockets API in a human-readable format.
@@ -63,7 +63,7 @@ def print_ohlc_message(message):
         )
 
 
-def print_ticker_message(message):
+def process_ticker_message(message):
     """
     Function prints Ticker information on currency pair from Kraken WebSockets
     API in a human-readable format.
@@ -141,7 +141,7 @@ def print_ticker_message(message):
         )
 
 
-def print_trade_message(message):
+def process_trade_message(message):
     """
     Function prints Trade feed for a currency pair from Kraken WebSockets API in
     a human-readable format.
