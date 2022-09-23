@@ -6,6 +6,7 @@ from messages import (
     process_ohlc_message,
     process_ticker_message,
     process_trade_message,
+    process_book_message,
 )
 
 
@@ -134,6 +135,43 @@ def stream_trade_data(*args: str):
     def on_open(ws):
         ws.send(
             f'{{"event":"subscribe", "subscription":{{"name":"trade"}}, "pair":{pairs}}}'
+        )
+
+    ws = websocket.WebSocketApp(
+        "wss://ws.kraken.com/",
+        on_message=on_message,
+        on_error=on_error,
+        on_open=on_open,
+    )
+    ws.run_forever()
+
+
+def stream_book_data(*args: str):
+    """
+    Function subscribes to the Kraken WebSockets API and streams Order Book data
+    for a given currency pair/s.
+
+    Args:
+        *args:str: Pass a variable number of currency pairs to the function in
+        "XXX/YYY" format.
+    """
+
+    pairs = [arg.upper() for arg in args]
+
+    def on_message(ws, message):
+        process_book_message(
+            message,
+            pairs=[
+                "XBT/USD",
+            ],
+        )
+
+    def on_error(ws, error):
+        print(error)
+
+    def on_open(ws):
+        ws.send(
+            f'{{"event":"subscribe", "subscription":{{"name":"book"}}, "pair":{json.dumps(pairs)}}} '
         )
 
     ws = websocket.WebSocketApp(
