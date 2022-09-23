@@ -168,3 +168,96 @@ def process_trade_message(message):
                 }
             }
         )
+
+
+def process_book_message(message, pairs):
+    """
+    Function prints Order book feed for a currency pair from Kraken WebSockets
+    API in a human-readable format.It takes one argument, which is the JSON
+    string that was sent by the server.The function then parses through it and
+    prints out all of its contents.
+
+    Args:
+        message: Pass the message to the function.
+    """
+
+    message = json.loads(message)
+    order_book = {}
+    for pair in pairs:
+        order_book[pair] = {"bid": {}, "ask": {}}
+
+    if not isinstance(message, dict):
+
+        data = message[1]
+        pair = message[-1]
+
+        if "as" in data or "bs" in data:
+            ask, bid = {}, {}
+
+            # construct new ask and bid for our orderbook that we maintain
+            for record in data["as"]:
+                ask[record[0]] = {"volume": record[1]}
+
+            for record in data["bs"]:
+                bid[record[0]] = {"volume": record[1]}
+
+            order_book[pair]["ask"] = ask
+            order_book[pair]["bid"] = bid
+
+        if "a" in data:
+            if pair not in order_book:
+                order_book[pair] = {"bid": {}, "ask": {}}
+
+            for record in data["a"]:
+                # skip "republish" update messages
+                if len(record) == 4 and record[3] == "r":
+                    continue
+
+                price = record[0]
+                volume = record[1]
+
+                # if volume is 0, that means we need to delete the record
+                if int(float(volume)) == 0 and price in order_book[pair]["ask"]:
+                    del order_book[pair]["ask"][price]
+
+                if not order_book[pair]["ask"].get(price):
+                    # insert new record and remove the last one out of scope
+                    prices_sorted = sorted(order_book[pair]["ask"].keys())
+                    if prices_sorted:
+                        min_price = prices_sorted[-1]
+                        del order_book[pair]["ask"][min_price]
+
+                    order_book[pair]["ask"][price] = {"volume": volume}
+                else:
+                    # update the existing record
+                    order_book[pair]["ask"][price]["volume"] = volume
+
+        if "b" in data:
+            if pair not in order_book:
+                order_book[pair] = {"bid": {}, "ask": {}}
+
+            for record in data["b"]:
+                # skip "republish" update messages
+                if len(record) == 4 and record[3] == "r":
+                    continue
+
+                price = record[0]
+                volume = record[1]
+
+                # if volume is 0, that means we need to delete the record
+                if int(float(volume)) == 0 and price in order_book[pair]["bid"]:
+                    del order_book[pair]["bid"][price]
+
+                if not order_book[pair]["bid"].get(price):
+                    # insert new record and remove the last one out of scope
+                    prices_sorted = sorted(order_book[pair]["bid"].keys())
+                    if prices_sorted:
+                        min_price = prices_sorted[-1]
+                        del order_book[pair]["bid"][min_price]
+
+                    order_book[pair]["bid"][price] = {"volume": volume}
+                else:
+                    # update the existing record
+                    order_book[pair]["bid"][price]["volume"] = volume
+
+    print(order_book)
