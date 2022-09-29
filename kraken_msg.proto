@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+message Ticker {
+  optional string ticker = 1;
+  optional float price = 2;
+}
+
+message Spread {
+  optional string spread = 1;
+  optional float ask = 2;
+  optional float bid = 3;
+  optional string time = 4;
+  optional float bid_volume = 5;
+  optional float ask_volume = 6;
+}
+
+message OHLC {
+  optional string ohlc = 1;
+  optional string begin= 2;
+  optional string end = 3;
+  optional float open = 4;
+  optional float high = 5;
+  optional float low = 6;
+  optional float close = 7;
+  optional float vwap= 8;
+  optional float volume = 9;
+  optional int32 number_of_trades = 10;
+}
+
+message Trade{
+  optional string trade = 1;
+  optional float price = 2;
+  optional float volume = 3;
+  optional string time = 4;
+  optional string side = 5;
+  optional string order_type = 6;
+  optional string misc = 7;
+
+}
