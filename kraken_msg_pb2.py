@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x10kraken_msg.proto"F\n\x06Ticker\x12\x13\n\x06ticker\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x12\n\x05price\x18\x02 \x01(\x02H\x01\x88\x01\x01\x42\t\n\x07_tickerB\x08\n\x06_price"\xc8\x01\n\x06Spread\x12\x13\n\x06spread\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x10\n\x03\x61sk\x18\x02 \x01(\x02H\x01\x88\x01\x01\x12\x10\n\x03\x62id\x18\x03 \x01(\x02H\x02\x88\x01\x01\x12\x11\n\x04time\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x17\n\nbid_volume\x18\x05 \x01(\x02H\x04\x88\x01\x01\x12\x17\n\nask_volume\x18\x06 \x01(\x02H\x05\x88\x01\x01\x42\t\n\x07_spreadB\x06\n\x04_askB\x06\n\x04_bidB\x07\n\x05_timeB\r\n\x0b_bid_volumeB\r\n\x0b_ask_volume"\xba\x02\n\x04OHLC\x12\x11\n\x04ohlc\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x12\n\x05\x62\x65gin\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x10\n\x03\x65nd\x18\x03 \x01(\tH\x02\x88\x01\x01\x12\x11\n\x04open\x18\x04 \x01(\x02H\x03\x88\x01\x01\x12\x11\n\x04high\x18\x05 \x01(\x02H\x04\x88\x01\x01\x12\x10\n\x03low\x18\x06 \x01(\x02H\x05\x88\x01\x01\x12\x12\n\x05\x63lose\x18\x07 \x01(\x02H\x06\x88\x01\x01\x12\x11\n\x04vwap\x18\x08 \x01(\x02H\x07\x88\x01\x01\x12\x13\n\x06volume\x18\t \x01(\x02H\x08\x88\x01\x01\x12\x1d\n\x10number_of_trades\x18\n \x01(\x05H\t\x88\x01\x01\x42\x07\n\x05_ohlcB\x08\n\x06_beginB\x06\n\x04_endB\x07\n\x05_openB\x07\n\x05_highB\x06\n\x04_lowB\x08\n\x06_closeB\x07\n\x05_vwapB\t\n\x07_volumeB\x13\n\x11_number_of_trades"\xdf\x01\n\x05Trade\x12\x12\n\x05trade\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x12\n\x05price\x18\x02 \x01(\x02H\x01\x88\x01\x01\x12\x13\n\x06volume\x18\x03 \x01(\x02H\x02\x88\x01\x01\x12\x11\n\x04time\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x11\n\x04side\x18\x05 \x01(\tH\x04\x88\x01\x01\x12\x17\n\norder_type\x18\x06 \x01(\tH\x05\x88\x01\x01\x12\x11\n\x04misc\x18\x07 \x01(\tH\x06\x88\x01\x01\x42\x08\n\x06_tradeB\x08\n\x06_priceB\t\n\x07_volumeB\x07\n\x05_timeB\x07\n\x05_sideB\r\n\x0b_order_typeB\x07\n\x05_miscb\x06proto3',
+    serialized_pb=b'\n\x10kraken_msg.proto"^\n\x06Ticker\x12\x11\n\x04type\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x11\n\x04pair\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x12\n\x05price\x18\x03 \x01(\x02H\x02\x88\x01\x01\x42\x07\n\x05_typeB\x07\n\x05_pairB\x08\n\x06_price"\xe0\x01\n\x06Spread\x12\x11\n\x04type\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x11\n\x04pair\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x10\n\x03\x61sk\x18\x03 \x01(\x02H\x02\x88\x01\x01\x12\x10\n\x03\x62id\x18\x04 \x01(\x02H\x03\x88\x01\x01\x12\x11\n\x04time\x18\x05 \x01(\tH\x04\x88\x01\x01\x12\x17\n\nbid_volume\x18\x06 \x01(\x02H\x05\x88\x01\x01\x12\x17\n\nask_volume\x18\x07 \x01(\x02H\x06\x88\x01\x01\x42\x07\n\x05_typeB\x07\n\x05_pairB\x06\n\x04_askB\x06\n\x04_bidB\x07\n\x05_timeB\r\n\x0b_bid_volumeB\r\n\x0b_ask_volume"\xbc\x02\n\x04OHLC\x12\x11\n\x04type\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x11\n\x04pair\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x12\n\x05\x62\x65gin\x18\x03 \x01(\tH\x02\x88\x01\x01\x12\x10\n\x03\x65nd\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x11\n\x04open\x18\x05 \x01(\x02H\x04\x88\x01\x01\x12\x11\n\x04high\x18\x06 \x01(\x02H\x05\x88\x01\x01\x12\x10\n\x03low\x18\x07 \x01(\x02H\x06\x88\x01\x01\x12\x12\n\x05\x63lose\x18\x08 \x01(\x02H\x07\x88\x01\x01\x12\x11\n\x04vwap\x18\t \x01(\x02H\x08\x88\x01\x01\x12\x13\n\x06volume\x18\n \x01(\x02H\t\x88\x01\x01\x12\x10\n\x03num\x18\x0b \x01(\x05H\n\x88\x01\x01\x42\x07\n\x05_typeB\x07\n\x05_pairB\x08\n\x06_beginB\x06\n\x04_endB\x07\n\x05_openB\x07\n\x05_highB\x06\n\x04_lowB\x08\n\x06_closeB\x07\n\x05_vwapB\t\n\x07_volumeB\x06\n\x04_num"\xeb\x01\n\x05Trade\x12\x11\n\x04type\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x11\n\x04pair\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x12\n\x05price\x18\x03 \x01(\x02H\x02\x88\x01\x01\x12\x13\n\x06volume\x18\x04 \x01(\x02H\x03\x88\x01\x01\x12\x11\n\x04time\x18\x05 \x01(\tH\x04\x88\x01\x01\x12\x11\n\x04side\x18\x06 \x01(\tH\x05\x88\x01\x01\x12\x17\n\norder_type\x18\x07 \x01(\tH\x06\x88\x01\x01\x12\x0c\n\x04misc\x18\x08 \x01(\tB\x07\n\x05_typeB\x07\n\x05_pairB\x08\n\x06_priceB\t\n\x07_volumeB\x07\n\x05_timeB\x07\n\x05_sideB\r\n\x0b_order_typeb\x06proto3',
 )
 
 
@@ -31,10 +31,29 @@ _TICKER = _descriptor.Descriptor(
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name="ticker",
-            full_name="Ticker.ticker",
+            name="type",
+            full_name="Ticker.type",
             index=0,
             number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="pair",
+            full_name="Ticker.pair",
+            index=1,
+            number=2,
             type=9,
             cpp_type=9,
             label=1,
@@ -52,8 +71,8 @@ _TICKER = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="price",
             full_name="Ticker.price",
-            index=1,
-            number=2,
+            index=2,
+            number=3,
             type=2,
             cpp_type=6,
             label=1,
@@ -78,9 +97,17 @@ _TICKER = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
         _descriptor.OneofDescriptor(
-            name="_ticker",
-            full_name="Ticker._ticker",
+            name="_type",
+            full_name="Ticker._type",
             index=0,
+            containing_type=None,
+            create_key=_descriptor._internal_create_key,
+            fields=[],
+        ),
+        _descriptor.OneofDescriptor(
+            name="_pair",
+            full_name="Ticker._pair",
+            index=1,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -88,14 +115,14 @@ _TICKER = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_price",
             full_name="Ticker._price",
-            index=1,
+            index=2,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
     serialized_start=20,
-    serialized_end=90,
+    serialized_end=114,
 )
 
 
@@ -108,10 +135,29 @@ _SPREAD = _descriptor.Descriptor(
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name="spread",
-            full_name="Spread.spread",
+            name="type",
+            full_name="Spread.type",
             index=0,
             number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="pair",
+            full_name="Spread.pair",
+            index=1,
+            number=2,
             type=9,
             cpp_type=9,
             label=1,
@@ -129,25 +175,6 @@ _SPREAD = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="ask",
             full_name="Spread.ask",
-            index=1,
-            number=2,
-            type=2,
-            cpp_type=6,
-            label=1,
-            has_default_value=False,
-            default_value=float(0),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="bid",
-            full_name="Spread.bid",
             index=2,
             number=3,
             type=2,
@@ -165,10 +192,29 @@ _SPREAD = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="time",
-            full_name="Spread.time",
+            name="bid",
+            full_name="Spread.bid",
             index=3,
             number=4,
+            type=2,
+            cpp_type=6,
+            label=1,
+            has_default_value=False,
+            default_value=float(0),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="time",
+            full_name="Spread.time",
+            index=4,
+            number=5,
             type=9,
             cpp_type=9,
             label=1,
@@ -186,8 +232,8 @@ _SPREAD = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="bid_volume",
             full_name="Spread.bid_volume",
-            index=4,
-            number=5,
+            index=5,
+            number=6,
             type=2,
             cpp_type=6,
             label=1,
@@ -205,8 +251,8 @@ _SPREAD = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="ask_volume",
             full_name="Spread.ask_volume",
-            index=5,
-            number=6,
+            index=6,
+            number=7,
             type=2,
             cpp_type=6,
             label=1,
@@ -231,9 +277,17 @@ _SPREAD = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
         _descriptor.OneofDescriptor(
-            name="_spread",
-            full_name="Spread._spread",
+            name="_type",
+            full_name="Spread._type",
             index=0,
+            containing_type=None,
+            create_key=_descriptor._internal_create_key,
+            fields=[],
+        ),
+        _descriptor.OneofDescriptor(
+            name="_pair",
+            full_name="Spread._pair",
+            index=1,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -241,7 +295,7 @@ _SPREAD = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_ask",
             full_name="Spread._ask",
-            index=1,
+            index=2,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -249,7 +303,7 @@ _SPREAD = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_bid",
             full_name="Spread._bid",
-            index=2,
+            index=3,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -257,7 +311,7 @@ _SPREAD = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_time",
             full_name="Spread._time",
-            index=3,
+            index=4,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -265,7 +319,7 @@ _SPREAD = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_bid_volume",
             full_name="Spread._bid_volume",
-            index=4,
+            index=5,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -273,14 +327,14 @@ _SPREAD = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_ask_volume",
             full_name="Spread._ask_volume",
-            index=5,
+            index=6,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
-    serialized_start=93,
-    serialized_end=293,
+    serialized_start=117,
+    serialized_end=341,
 )
 
 
@@ -293,8 +347,8 @@ _OHLC = _descriptor.Descriptor(
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name="ohlc",
-            full_name="OHLC.ohlc",
+            name="type",
+            full_name="OHLC.type",
             index=0,
             number=1,
             type=9,
@@ -312,8 +366,8 @@ _OHLC = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="begin",
-            full_name="OHLC.begin",
+            name="pair",
+            full_name="OHLC.pair",
             index=1,
             number=2,
             type=9,
@@ -331,8 +385,8 @@ _OHLC = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="end",
-            full_name="OHLC.end",
+            name="begin",
+            full_name="OHLC.begin",
             index=2,
             number=3,
             type=9,
@@ -350,15 +404,15 @@ _OHLC = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="open",
-            full_name="OHLC.open",
+            name="end",
+            full_name="OHLC.end",
             index=3,
             number=4,
-            type=2,
-            cpp_type=6,
+            type=9,
+            cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=float(0),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -369,8 +423,8 @@ _OHLC = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="high",
-            full_name="OHLC.high",
+            name="open",
+            full_name="OHLC.open",
             index=4,
             number=5,
             type=2,
@@ -388,8 +442,8 @@ _OHLC = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="low",
-            full_name="OHLC.low",
+            name="high",
+            full_name="OHLC.high",
             index=5,
             number=6,
             type=2,
@@ -407,8 +461,8 @@ _OHLC = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="close",
-            full_name="OHLC.close",
+            name="low",
+            full_name="OHLC.low",
             index=6,
             number=7,
             type=2,
@@ -426,8 +480,8 @@ _OHLC = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="vwap",
-            full_name="OHLC.vwap",
+            name="close",
+            full_name="OHLC.close",
             index=7,
             number=8,
             type=2,
@@ -445,8 +499,8 @@ _OHLC = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="volume",
-            full_name="OHLC.volume",
+            name="vwap",
+            full_name="OHLC.vwap",
             index=8,
             number=9,
             type=2,
@@ -464,10 +518,29 @@ _OHLC = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="number_of_trades",
-            full_name="OHLC.number_of_trades",
+            name="volume",
+            full_name="OHLC.volume",
             index=9,
             number=10,
+            type=2,
+            cpp_type=6,
+            label=1,
+            has_default_value=False,
+            default_value=float(0),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="num",
+            full_name="OHLC.num",
+            index=10,
+            number=11,
             type=5,
             cpp_type=1,
             label=1,
@@ -492,9 +565,17 @@ _OHLC = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
         _descriptor.OneofDescriptor(
-            name="_ohlc",
-            full_name="OHLC._ohlc",
+            name="_type",
+            full_name="OHLC._type",
             index=0,
+            containing_type=None,
+            create_key=_descriptor._internal_create_key,
+            fields=[],
+        ),
+        _descriptor.OneofDescriptor(
+            name="_pair",
+            full_name="OHLC._pair",
+            index=1,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -502,7 +583,7 @@ _OHLC = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_begin",
             full_name="OHLC._begin",
-            index=1,
+            index=2,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -510,7 +591,7 @@ _OHLC = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_end",
             full_name="OHLC._end",
-            index=2,
+            index=3,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -518,7 +599,7 @@ _OHLC = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_open",
             full_name="OHLC._open",
-            index=3,
+            index=4,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -526,7 +607,7 @@ _OHLC = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_high",
             full_name="OHLC._high",
-            index=4,
+            index=5,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -534,7 +615,7 @@ _OHLC = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_low",
             full_name="OHLC._low",
-            index=5,
+            index=6,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -542,7 +623,7 @@ _OHLC = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_close",
             full_name="OHLC._close",
-            index=6,
+            index=7,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -550,7 +631,7 @@ _OHLC = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_vwap",
             full_name="OHLC._vwap",
-            index=7,
+            index=8,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -558,22 +639,22 @@ _OHLC = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_volume",
             full_name="OHLC._volume",
-            index=8,
-            containing_type=None,
-            create_key=_descriptor._internal_create_key,
-            fields=[],
-        ),
-        _descriptor.OneofDescriptor(
-            name="_number_of_trades",
-            full_name="OHLC._number_of_trades",
             index=9,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
         ),
+        _descriptor.OneofDescriptor(
+            name="_num",
+            full_name="OHLC._num",
+            index=10,
+            containing_type=None,
+            create_key=_descriptor._internal_create_key,
+            fields=[],
+        ),
     ],
-    serialized_start=296,
-    serialized_end=610,
+    serialized_start=344,
+    serialized_end=660,
 )
 
 
@@ -586,8 +667,8 @@ _TRADE = _descriptor.Descriptor(
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name="trade",
-            full_name="Trade.trade",
+            name="type",
+            full_name="Trade.type",
             index=0,
             number=1,
             type=9,
@@ -605,15 +686,15 @@ _TRADE = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="price",
-            full_name="Trade.price",
+            name="pair",
+            full_name="Trade.pair",
             index=1,
             number=2,
-            type=2,
-            cpp_type=6,
+            type=9,
+            cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=float(0),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -624,8 +705,8 @@ _TRADE = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="volume",
-            full_name="Trade.volume",
+            name="price",
+            full_name="Trade.price",
             index=2,
             number=3,
             type=2,
@@ -643,15 +724,15 @@ _TRADE = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="time",
-            full_name="Trade.time",
+            name="volume",
+            full_name="Trade.volume",
             index=3,
             number=4,
-            type=9,
-            cpp_type=9,
+            type=2,
+            cpp_type=6,
             label=1,
             has_default_value=False,
-            default_value=b"".decode("utf-8"),
+            default_value=float(0),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -662,8 +743,8 @@ _TRADE = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="side",
-            full_name="Trade.side",
+            name="time",
+            full_name="Trade.time",
             index=4,
             number=5,
             type=9,
@@ -681,8 +762,8 @@ _TRADE = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="order_type",
-            full_name="Trade.order_type",
+            name="side",
+            full_name="Trade.side",
             index=5,
             number=6,
             type=9,
@@ -700,10 +781,29 @@ _TRADE = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="misc",
-            full_name="Trade.misc",
+            name="order_type",
+            full_name="Trade.order_type",
             index=6,
             number=7,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="misc",
+            full_name="Trade.misc",
+            index=7,
+            number=8,
             type=9,
             cpp_type=9,
             label=1,
@@ -728,9 +828,17 @@ _TRADE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
         _descriptor.OneofDescriptor(
-            name="_trade",
-            full_name="Trade._trade",
+            name="_type",
+            full_name="Trade._type",
             index=0,
+            containing_type=None,
+            create_key=_descriptor._internal_create_key,
+            fields=[],
+        ),
+        _descriptor.OneofDescriptor(
+            name="_pair",
+            full_name="Trade._pair",
+            index=1,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -738,7 +846,7 @@ _TRADE = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_price",
             full_name="Trade._price",
-            index=1,
+            index=2,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -746,7 +854,7 @@ _TRADE = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_volume",
             full_name="Trade._volume",
-            index=2,
+            index=3,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -754,7 +862,7 @@ _TRADE = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_time",
             full_name="Trade._time",
-            index=3,
+            index=4,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -762,7 +870,7 @@ _TRADE = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_side",
             full_name="Trade._side",
-            index=4,
+            index=5,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
@@ -770,30 +878,26 @@ _TRADE = _descriptor.Descriptor(
         _descriptor.OneofDescriptor(
             name="_order_type",
             full_name="Trade._order_type",
-            index=5,
-            containing_type=None,
-            create_key=_descriptor._internal_create_key,
-            fields=[],
-        ),
-        _descriptor.OneofDescriptor(
-            name="_misc",
-            full_name="Trade._misc",
             index=6,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
-    serialized_start=613,
-    serialized_end=836,
+    serialized_start=663,
+    serialized_end=898,
 )
 
-_TICKER.oneofs_by_name["_ticker"].fields.append(_TICKER.fields_by_name["ticker"])
-_TICKER.fields_by_name["ticker"].containing_oneof = _TICKER.oneofs_by_name["_ticker"]
+_TICKER.oneofs_by_name["_type"].fields.append(_TICKER.fields_by_name["type"])
+_TICKER.fields_by_name["type"].containing_oneof = _TICKER.oneofs_by_name["_type"]
+_TICKER.oneofs_by_name["_pair"].fields.append(_TICKER.fields_by_name["pair"])
+_TICKER.fields_by_name["pair"].containing_oneof = _TICKER.oneofs_by_name["_pair"]
 _TICKER.oneofs_by_name["_price"].fields.append(_TICKER.fields_by_name["price"])
 _TICKER.fields_by_name["price"].containing_oneof = _TICKER.oneofs_by_name["_price"]
-_SPREAD.oneofs_by_name["_spread"].fields.append(_SPREAD.fields_by_name["spread"])
-_SPREAD.fields_by_name["spread"].containing_oneof = _SPREAD.oneofs_by_name["_spread"]
+_SPREAD.oneofs_by_name["_type"].fields.append(_SPREAD.fields_by_name["type"])
+_SPREAD.fields_by_name["type"].containing_oneof = _SPREAD.oneofs_by_name["_type"]
+_SPREAD.oneofs_by_name["_pair"].fields.append(_SPREAD.fields_by_name["pair"])
+_SPREAD.fields_by_name["pair"].containing_oneof = _SPREAD.oneofs_by_name["_pair"]
 _SPREAD.oneofs_by_name["_ask"].fields.append(_SPREAD.fields_by_name["ask"])
 _SPREAD.fields_by_name["ask"].containing_oneof = _SPREAD.oneofs_by_name["_ask"]
 _SPREAD.oneofs_by_name["_bid"].fields.append(_SPREAD.fields_by_name["bid"])
@@ -812,8 +916,10 @@ _SPREAD.oneofs_by_name["_ask_volume"].fields.append(
 _SPREAD.fields_by_name["ask_volume"].containing_oneof = _SPREAD.oneofs_by_name[
     "_ask_volume"
 ]
-_OHLC.oneofs_by_name["_ohlc"].fields.append(_OHLC.fields_by_name["ohlc"])
-_OHLC.fields_by_name["ohlc"].containing_oneof = _OHLC.oneofs_by_name["_ohlc"]
+_OHLC.oneofs_by_name["_type"].fields.append(_OHLC.fields_by_name["type"])
+_OHLC.fields_by_name["type"].containing_oneof = _OHLC.oneofs_by_name["_type"]
+_OHLC.oneofs_by_name["_pair"].fields.append(_OHLC.fields_by_name["pair"])
+_OHLC.fields_by_name["pair"].containing_oneof = _OHLC.oneofs_by_name["_pair"]
 _OHLC.oneofs_by_name["_begin"].fields.append(_OHLC.fields_by_name["begin"])
 _OHLC.fields_by_name["begin"].containing_oneof = _OHLC.oneofs_by_name["_begin"]
 _OHLC.oneofs_by_name["_end"].fields.append(_OHLC.fields_by_name["end"])
@@ -830,14 +936,12 @@ _OHLC.oneofs_by_name["_vwap"].fields.append(_OHLC.fields_by_name["vwap"])
 _OHLC.fields_by_name["vwap"].containing_oneof = _OHLC.oneofs_by_name["_vwap"]
 _OHLC.oneofs_by_name["_volume"].fields.append(_OHLC.fields_by_name["volume"])
 _OHLC.fields_by_name["volume"].containing_oneof = _OHLC.oneofs_by_name["_volume"]
-_OHLC.oneofs_by_name["_number_of_trades"].fields.append(
-    _OHLC.fields_by_name["number_of_trades"]
-)
-_OHLC.fields_by_name["number_of_trades"].containing_oneof = _OHLC.oneofs_by_name[
-    "_number_of_trades"
-]
-_TRADE.oneofs_by_name["_trade"].fields.append(_TRADE.fields_by_name["trade"])
-_TRADE.fields_by_name["trade"].containing_oneof = _TRADE.oneofs_by_name["_trade"]
+_OHLC.oneofs_by_name["_num"].fields.append(_OHLC.fields_by_name["num"])
+_OHLC.fields_by_name["num"].containing_oneof = _OHLC.oneofs_by_name["_num"]
+_TRADE.oneofs_by_name["_type"].fields.append(_TRADE.fields_by_name["type"])
+_TRADE.fields_by_name["type"].containing_oneof = _TRADE.oneofs_by_name["_type"]
+_TRADE.oneofs_by_name["_pair"].fields.append(_TRADE.fields_by_name["pair"])
+_TRADE.fields_by_name["pair"].containing_oneof = _TRADE.oneofs_by_name["_pair"]
 _TRADE.oneofs_by_name["_price"].fields.append(_TRADE.fields_by_name["price"])
 _TRADE.fields_by_name["price"].containing_oneof = _TRADE.oneofs_by_name["_price"]
 _TRADE.oneofs_by_name["_volume"].fields.append(_TRADE.fields_by_name["volume"])
@@ -850,8 +954,6 @@ _TRADE.oneofs_by_name["_order_type"].fields.append(_TRADE.fields_by_name["order_
 _TRADE.fields_by_name["order_type"].containing_oneof = _TRADE.oneofs_by_name[
     "_order_type"
 ]
-_TRADE.oneofs_by_name["_misc"].fields.append(_TRADE.fields_by_name["misc"])
-_TRADE.fields_by_name["misc"].containing_oneof = _TRADE.oneofs_by_name["_misc"]
 DESCRIPTOR.message_types_by_name["Ticker"] = _TICKER
 DESCRIPTOR.message_types_by_name["Spread"] = _SPREAD
 DESCRIPTOR.message_types_by_name["OHLC"] = _OHLC
