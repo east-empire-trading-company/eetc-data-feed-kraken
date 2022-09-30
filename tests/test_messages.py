@@ -30,13 +30,13 @@ def test_process_ticker_message():
             "XBT/USD",
         ]
     )
+    expected = json_format.ParseDict(output_params, kraken_msg_pb2.Ticker())
 
     # when
-    output_params_proto = json_format.ParseDict(output_params, kraken_msg_pb2.Ticker())
     kraken_message_proto = process_ticker_message(kraken_message)
 
     # then
-    assert output_params_proto == kraken_message_proto
+    assert expected == kraken_message_proto
 
 
 def test_process_ohlc_message():
@@ -71,13 +71,13 @@ def test_process_ohlc_message():
             "XBT/USD",
         ]
     )
+    expected = json_format.ParseDict(output_params, kraken_msg_pb2.OHLC())
 
     # when
-    output_params_proto = json_format.ParseDict(output_params, kraken_msg_pb2.OHLC())
     kraken_message_proto = process_ohlc_message(kraken_message)
 
     # then
-    assert output_params_proto == kraken_message_proto
+    assert expected == kraken_message_proto
 
 
 def test_process_spread_message():
@@ -104,13 +104,13 @@ def test_process_spread_message():
         "bid_volume": 4.0601487,
         "ask_volume": 0.001,
     }
+    expected = json_format.ParseDict(output_params, kraken_msg_pb2.Spread())
 
     # when
-    output_params_proto = json_format.ParseDict(output_params, kraken_msg_pb2.Spread())
     kraken_message_proto = process_spread_message(kraken_message)
 
     # then
-    assert output_params_proto == kraken_message_proto
+    assert expected == kraken_message_proto
 
 
 def test_process_trade_message():
@@ -132,10 +132,10 @@ def test_process_trade_message():
         "order_type": "m",
         "misc": "",
     }
+    expected = json_format.ParseDict(output_params, kraken_msg_pb2.Trade())
 
     # when
-    output_params_proto = json_format.ParseDict(output_params, kraken_msg_pb2.Trade())
     kraken_message_proto = process_trade_message(kraken_message)
 
     # then
-    assert output_params_proto == kraken_message_proto
+    assert expected == kraken_message_proto
