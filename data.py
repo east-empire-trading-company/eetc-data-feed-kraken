@@ -6,7 +6,7 @@ from messages import (
     process_ohlc_message,
     process_ticker_message,
     process_trade_message,
-    process_book_message,
+    print_book_message,
 )
 
 
@@ -159,7 +159,7 @@ def stream_book_data(*args: str):
     pairs = [arg.upper() for arg in args]
 
     def on_message(ws, message):
-        process_book_message(
+        print_book_message(
             message,
             pairs=[
                 "XBT/USD",
