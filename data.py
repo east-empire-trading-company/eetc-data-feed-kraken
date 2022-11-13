@@ -1,6 +1,10 @@
 import json
-import websocket
+from typing import List
 
+import websocket
+import zmq
+
+import settings
 from messages import (
     process_spread_message,
     process_ohlc_message,
@@ -10,24 +14,32 @@ from messages import (
 )
 
 
-def stream_spread_data(*args: str):
+def stream_spread_data(pairs: List[str], zmq_context: zmq.Context):
     """
-    Function subscribes to the Kraken WebSockets API and
-    streams Spread data for a given currency pair/s. The function prints out the
-    current bid/ask spread for each pair, as well as the time at which it was
-    recorded.
-
-    Args:
-        *args:str: Pass a variable number of currency pairs to the function in
-        "XXX/YYY" format.
+    Subscribes to the Kraken WebSockets API and streams Spread data for a given
+    currency pair/s.
     """
 
-    pairs = json.dumps([arg.upper() for arg in args])
+    pairs = json.dumps([pair.upper() for pair in pairs])
+
+    # Create ZeroMQ PUSH Socket and connect it to IPC url
+    # This PUSH Socket will push data from thread to a single PULL socket
+    zmq_push_socket = zmq_context.socket(zmq.PUSH)
+    zmq_push_socket.connect(settings.ZMQ_PUSH_PULL_IPC_URL)
 
     def on_message(ws, message):
-        process_spread_message(message)
+        topic, processed_message = process_spread_message(message)
+
+        if processed_message is not None:
+            zmq_push_socket.send_multipart(
+                [
+                    topic.encode(),
+                    processed_message.SerializeToString(),
+                ],
+            )
 
     def on_error(ws, error):
+        # TODO replace with logger.error()
         print(error)
 
     def on_open(ws):
@@ -66,6 +78,7 @@ def stream_ohlc_data(*args: str, interval=1):
         process_ohlc_message(message)
 
     def on_error(ws, error):
+        # TODO replace with logger.error()
         print(error)
 
     def on_open(ws):
@@ -98,6 +111,7 @@ def stream_ticker_data(*args: str):
         process_ticker_message(message)
 
     def on_error(ws, error):
+        # TODO replace with logger.error()
         print(error)
 
     def on_open(ws):
@@ -130,6 +144,7 @@ def stream_trade_data(*args: str):
         process_trade_message(message)
 
     def on_error(ws, error):
+        # TODO replace with logger.error()
         print(error)
 
     def on_open(ws):
@@ -167,6 +182,7 @@ def stream_book_data(*args: str):
         )
 
     def on_error(ws, error):
+        # TODO replace with logger.error()
         print(error)
 
     def on_open(ws):
