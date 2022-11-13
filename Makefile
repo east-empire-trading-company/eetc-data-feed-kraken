@@ -12,4 +12,4 @@ reformat_code:
 	black .
 
 compile_kraken_msg_proto:
-	protoc -I=. --python_out=. ./kraken_msg.proto  --experimental_allow_proto3_optional
+	protoc -I=. --python_out=. ./kraken_msg.proto
