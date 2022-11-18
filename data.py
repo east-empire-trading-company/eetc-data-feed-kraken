@@ -56,26 +56,40 @@ def stream_spread_data(pairs: List[str], zmq_context: zmq.Context):
     ws.run_forever()
 
 
-def stream_ohlc_data(*args: str, interval=1):
+def stream_ohlc_data(pairs: List[str], zmq_context: zmq.Context, interval=1):
     """
-    Function subscribes to the Kraken WebSockets API and streams OHLC data for
-    a given currency pair/s.
-
-    Args:
-        *args:str: Pass a variable number of currency pairs to the function in
-        "XXX/YYY" format.
-        :param interval: The time interval in minutes between each data point,
-        defaults to 1 (optional).
+    Subscribes to the Kraken WebSockets API and streams OHLC data for a given
+    currency pair/s.
     """
 
     if interval not in [1, 60, 1440]:
         print("Interval must be in: 1, 60, 1440")
         return
 
-    pairs = json.dumps([arg.upper() for arg in args])
+    pairs = json.dumps([pair.upper() for pair in pairs])
+
+    # Create ZeroMQ PUSH Socket and connect it to IPC url
+    # This PUSH Socket will push data from thread to a single PULL socket
+    zmq_push_socket = zmq_context.socket(zmq.PUSH)
+    zmq_push_socket.connect(settings.ZMQ_PUSH_PULL_IPC_URL)
 
     def on_message(ws, message):
-        process_ohlc_message(message)
+        topic, processed_message = process_ohlc_message(message)
+
+        if interval == 1:
+            topic = topic + "Minute"
+        if interval == 60:
+            topic = topic + "Hourly"
+        if interval == 1440:
+            topic = topic + "Daily"
+
+        if processed_message is not None:
+            zmq_push_socket.send_multipart(
+                [
+                    topic.encode(),
+                    processed_message.SerializeToString(),
+                ],
+            )
 
     def on_error(ws, error):
         # TODO replace with logger.error()
@@ -95,20 +109,29 @@ def stream_ohlc_data(*args: str, interval=1):
     ws.run_forever()
 
 
-def stream_ticker_data(*args: str):
+def stream_ticker_data(pairs: List[str], zmq_context: zmq.Context):
     """
-    Function subscribes to the Kraken WebSockets API and streams Ticker data for
-    a given currency pair/s.
-
-    Args:
-        *args:str: Pass a variable number of currency pairs to the function in
-        "XXX/YYY" format.
+    Subscribes to the Kraken WebSockets API and streams Ticker data for a given
+    currency pair/s.
     """
 
-    pairs = json.dumps([arg.upper() for arg in args])
+    pairs = json.dumps([pair.upper() for pair in pairs])
+
+    # Create ZeroMQ PUSH Socket and connect it to IPC url
+    # This PUSH Socket will push data from thread to a single PULL socket
+    zmq_push_socket = zmq_context.socket(zmq.PUSH)
+    zmq_push_socket.connect(settings.ZMQ_PUSH_PULL_IPC_URL)
 
     def on_message(ws, message):
-        process_ticker_message(message)
+        topic, processed_message = process_ticker_message(message)
+
+        if processed_message is not None:
+            zmq_push_socket.send_multipart(
+                [
+                    topic.encode(),
+                    processed_message.SerializeToString(),
+                ],
+            )
 
     def on_error(ws, error):
         # TODO replace with logger.error()
@@ -128,20 +151,29 @@ def stream_ticker_data(*args: str):
     ws.run_forever()
 
 
-def stream_trade_data(*args: str):
+def stream_trade_data(pairs: List[str], zmq_context: zmq.Context):
     """
-    Function subscribes to the Kraken WebSockets API and streams Trade data for
-    a given currency pair/s.
-
-    Args:
-        *args:str: Pass a variable number of currency pairs to the function in
-        "XXX/YYY" format.
+    Subscribes to the Kraken WebSockets API and streams Trade data for a given
+    currency pair/s.
     """
 
-    pairs = json.dumps([arg.upper() for arg in args])
+    pairs = json.dumps([pair.upper() for pair in pairs])
+
+    # Create ZeroMQ PUSH Socket and connect it to IPC url
+    # This PUSH Socket will push data from thread to a single PULL socket
+    zmq_push_socket = zmq_context.socket(zmq.PUSH)
+    zmq_push_socket.connect(settings.ZMQ_PUSH_PULL_IPC_URL)
 
     def on_message(ws, message):
-        process_trade_message(message)
+        topic, processed_message = process_trade_message(message)
+
+        if processed_message is not None:
+            zmq_push_socket.send_multipart(
+                [
+                    topic.encode(),
+                    processed_message.SerializeToString(),
+                ],
+            )
 
     def on_error(ws, error):
         # TODO replace with logger.error()

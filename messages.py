@@ -7,7 +7,7 @@ import kraken_msg_pb2
 
 def process_ticker_message(message: str) -> kraken_msg_pb2.Ticker:
     """
-    Function that takes a message from the Kraken websocket and converts it to a
+    Takes a message from the Kraken websocket and converts it to a
     protobuf message.
 
     :param message: The message received from the websocket
@@ -22,12 +22,16 @@ def process_ticker_message(message: str) -> kraken_msg_pb2.Ticker:
         ticker.pair = message[3]
         ticker.price = float(message[1]["c"][0])
 
-        return ticker
+        topic = f"Ticker - XBT/USD"
+
+        return topic, ticker
+
+    return None, None
 
 
 def process_spread_message(message: str) -> kraken_msg_pb2.Spread:
     """
-    Function that takes a message from the Kraken websocket and converts it to a
+    Takes a message from the Kraken websocket and converts it to a
     protobuf message.
 
     :param message: The message received from the websocket
@@ -75,7 +79,7 @@ def _convert_ohlc_type_to_frequency(ohlc_type: str) -> Optional[str]:
 
 def process_ohlc_message(message: str) -> kraken_msg_pb2.OHLC:
     """
-    Function that takes a message from the Kraken websocket, converts it to a
+    Takes a message from the Kraken websocket, converts it to a
     protobuf message.
 
     :param message: The message received from the websocket
@@ -102,7 +106,9 @@ def process_ohlc_message(message: str) -> kraken_msg_pb2.OHLC:
         ohlc.volume = float(message[1][7])
         ohlc.trades = int(message[1][8])
 
-        return ohlc
+        topic = f"OHLC - XBT/USD - "
+
+        return topic, ohlc
 
 
 def _convert_trade_side_value(trade_side: str) -> Optional[str]:
@@ -139,7 +145,7 @@ def _convert_order_type_value(order_type: str) -> Optional[str]:
 
 def process_trade_message(message: str) -> kraken_msg_pb2.Trade:
     """
-    Function that takes a message from the Kraken websocket and converts it to a
+    Takes a message from the Kraken websocket and converts it to a
     protobuf message.
 
     :param message: The message received from the websocket
@@ -161,7 +167,11 @@ def process_trade_message(message: str) -> kraken_msg_pb2.Trade:
         trade.order_type = _convert_order_type_value(message[1][0][4])
         trade.misc = message[1][0][5]
 
-        return trade
+        topic = f"Trade - XBT/USD"
+
+        return topic, trade
+
+    return None, None
 
 
 def print_book_message(message, pairs):
