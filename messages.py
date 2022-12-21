@@ -1,11 +1,11 @@
 import json
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Tuple
 
 import kraken_msg_pb2
 
 
-def process_ticker_message(message: str) -> kraken_msg_pb2.Ticker:
+def process_ticker_message(message: str) -> Tuple[str, kraken_msg_pb2.Ticker]:
     """
     Takes a message from the Kraken websocket and converts it to a
     protobuf message.
@@ -29,7 +29,7 @@ def process_ticker_message(message: str) -> kraken_msg_pb2.Ticker:
     return None, None
 
 
-def process_spread_message(message: str) -> kraken_msg_pb2.Spread:
+def process_spread_message(message: str) -> Tuple[str, kraken_msg_pb2.Spread]:
     """
     Takes a message from the Kraken websocket and converts it to a
     protobuf message.
@@ -62,14 +62,14 @@ def process_spread_message(message: str) -> kraken_msg_pb2.Spread:
 def _convert_ohlc_type_to_frequency(ohlc_type: str) -> Optional[str]:
     """
     Convert values like "ohlc-1", "ohlc-60" and "ohlc-1440" to values like
-    "Minute", "Hourly", "Daily".
+    "Minutely", "Hourly", "Daily".
 
     :param ohlc_type: String value like "ohlc-1", "ohlc-60", etc.
-    :return: String value like "Minute", "Hourly", etc.
+    :return: String value like "Minutely", "Hourly", etc.
     """
 
     ohlc_type_to_frequency_map = {
-        "ohlc-1": "Minute",
+        "ohlc-1": "Minutely",
         "ohlc-60": "Hourly",
         "ohlc-1440": "Daily",
     }
@@ -77,7 +77,7 @@ def _convert_ohlc_type_to_frequency(ohlc_type: str) -> Optional[str]:
     return ohlc_type_to_frequency_map.get(ohlc_type)
 
 
-def process_ohlc_message(message: str) -> kraken_msg_pb2.OHLC:
+def process_ohlc_message(message: str) -> Tuple[str, kraken_msg_pb2.OHLC]:
     """
     Takes a message from the Kraken websocket, converts it to a
     protobuf message.
@@ -109,6 +109,8 @@ def process_ohlc_message(message: str) -> kraken_msg_pb2.OHLC:
         topic = f"OHLC - XBT/USD - "
 
         return topic, ohlc
+
+    return None, None
 
 
 def _convert_trade_side_value(trade_side: str) -> Optional[str]:
@@ -143,7 +145,7 @@ def _convert_order_type_value(order_type: str) -> Optional[str]:
     return order_type_to_readable_value_map.get(order_type)
 
 
-def process_trade_message(message: str) -> kraken_msg_pb2.Trade:
+def process_trade_message(message: str) -> Tuple[str, kraken_msg_pb2.Trade]:
     """
     Takes a message from the Kraken websocket and converts it to a
     protobuf message.
