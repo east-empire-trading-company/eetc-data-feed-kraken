@@ -28,11 +28,14 @@ if __name__ == "__main__":
     zmq_pub_socket = zmq_context.socket(zmq.PUB)
     zmq_pub_socket.bind(zmq_pub_url)
 
-    # TODO finish implementations for trade, ohlc and ticker (use spread as reference)
-    trade = threading.Thread(target=stream_trade_data, args=("XBT/USD", zmq_context))
+    trade = threading.Thread(target=stream_trade_data, args=(["XBT/USD"], zmq_context))
     ohlc = threading.Thread(target=stream_ohlc_data, args=(["XBT/USD"], zmq_context))
-    ticker = threading.Thread(target=stream_ticker_data, args=(["XBT/USD"], zmq_context))
-    spread = threading.Thread(target=stream_spread_data, args=(["XBT/USD"], zmq_context))
+    ticker = threading.Thread(
+        target=stream_ticker_data, args=(["XBT/USD"], zmq_context)
+    )
+    spread = threading.Thread(
+        target=stream_spread_data, args=(["XBT/USD"], zmq_context)
+    )
 
     # start threads
     trade.start()
