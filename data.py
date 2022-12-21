@@ -3,6 +3,7 @@ from typing import List
 
 import websocket
 import zmq
+import logging
 
 import settings
 from messages import (
@@ -39,8 +40,7 @@ def stream_spread_data(pairs: List[str], zmq_context: zmq.Context):
             )
 
     def on_error(ws, error):
-        # TODO replace with logger.error()
-        print(error)
+        logging.error(error)
 
     def on_open(ws):
         ws.send(
@@ -76,14 +76,15 @@ def stream_ohlc_data(pairs: List[str], zmq_context: zmq.Context, interval=1):
     def on_message(ws, message):
         topic, processed_message = process_ohlc_message(message)
 
-        if interval == 1:
-            topic = topic + "Minute"
-        if interval == 60:
-            topic = topic + "Hourly"
-        if interval == 1440:
-            topic = topic + "Daily"
-
         if processed_message is not None:
+
+            if interval == 1:
+                topic = topic + "Minutely"
+            if interval == 60:
+                topic = topic + "Hourly"
+            if interval == 1440:
+                topic = topic + "Daily"
+
             zmq_push_socket.send_multipart(
                 [
                     topic.encode(),
@@ -92,8 +93,7 @@ def stream_ohlc_data(pairs: List[str], zmq_context: zmq.Context, interval=1):
             )
 
     def on_error(ws, error):
-        # TODO replace with logger.error()
-        print(error)
+        logging.error(error)
 
     def on_open(ws):
         ws.send(
@@ -134,8 +134,7 @@ def stream_ticker_data(pairs: List[str], zmq_context: zmq.Context):
             )
 
     def on_error(ws, error):
-        # TODO replace with logger.error()
-        print(error)
+        logging.error(error)
 
     def on_open(ws):
         ws.send(
@@ -176,8 +175,7 @@ def stream_trade_data(pairs: List[str], zmq_context: zmq.Context):
             )
 
     def on_error(ws, error):
-        # TODO replace with logger.error()
-        print(error)
+        logging.error(error)
 
     def on_open(ws):
         ws.send(
