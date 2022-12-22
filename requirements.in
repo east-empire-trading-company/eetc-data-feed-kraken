@@ -3,3 +3,4 @@ pip-tools
 protobuf==3.20.*
 pytest
 websocket-client
+zmq
