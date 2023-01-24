@@ -1,8 +1,13 @@
 import json
 from datetime import datetime
 from typing import Optional, Tuple
+import logging
 
 import kraken_msg_pb2
+
+logging.basicConfig(
+    format="%(asctime)s - %(message)s", datefmt="%d-%b-%y %H:%M:%S", level=logging.INFO
+)
 
 
 def process_ticker_message(message: str) -> Tuple[str, kraken_msg_pb2.Ticker]:
@@ -15,6 +20,9 @@ def process_ticker_message(message: str) -> Tuple[str, kraken_msg_pb2.Ticker]:
     """
 
     message = json.loads(message)
+
+    if str(message) == "{'event': 'heartbeat'}":
+        logging.info("Ticker connection is alive")
 
     if not isinstance(message, dict):
         ticker = kraken_msg_pb2.Ticker()
@@ -39,6 +47,9 @@ def process_spread_message(message: str) -> Tuple[str, kraken_msg_pb2.Spread]:
     """
 
     message = json.loads(message)
+
+    if str(message) == "{'event': 'heartbeat'}":
+        logging.info("Spread connection is alive")
 
     if not isinstance(message, dict):
         spread_time = datetime.fromtimestamp(float(message[1][2]))
@@ -87,6 +98,9 @@ def process_ohlc_message(message: str) -> Tuple[str, kraken_msg_pb2.OHLC]:
     """
 
     message = json.loads(message)
+
+    if str(message) == "{'event': 'heartbeat'}":
+        logging.info("OHLC connection is alive")
 
     if not isinstance(message, dict):
         ohlc_begin_time = datetime.fromtimestamp(float(message[1][0]))
@@ -155,6 +169,9 @@ def process_trade_message(message: str) -> Tuple[str, kraken_msg_pb2.Trade]:
     """
 
     message = json.loads(message)
+
+    if str(message) == "{'event': 'heartbeat'}":
+        logging.info("Trade connection is alive")
 
     if not isinstance(message, dict):
         trade_time = datetime.fromtimestamp(float(message[1][0][2]))
